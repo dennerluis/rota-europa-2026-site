@@ -3,13 +3,14 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = new URL('.', import.meta.url).pathname;
-for (const file of ['index.html', 'style.css', 'app.js', 'manifest.json', 'sw.js', 'assets/icon.png']) {
+for (const file of ['index.html', 'style.css', 'storage.js', 'app.js', 'manifest.json', 'sw.js', 'assets/icon.png']) {
   assert.equal(existsSync(join(root, file)), true, `Arquivo ausente: ${file}`);
 }
 
 const html = readFileSync(join(root, 'index.html'), 'utf8');
 const manifest = JSON.parse(readFileSync(join(root, 'manifest.json'), 'utf8'));
 const app = readFileSync(join(root, 'app.js'), 'utf8');
+const storage = readFileSync(join(root, 'storage.js'), 'utf8');
 
 assert.match(html, /Rota Europa 2026/);
 assert.match(html, /\.\/manifest\.json/);
@@ -19,4 +20,7 @@ assert.match(app, /Google Maps/);
 assert.match(app, /\.\/assets\/amsterdam\.jpg/);
 assert.match(app, /register\('\.\/sw\.js'\)/);
 assert.match(app, /localStorage/);
+assert.match(app, /RotaStorage/);
+assert.match(storage, /indexedDB/);
+assert.match(storage, /navigator\.storage/);
 console.log('Static site smoke tests passed');
