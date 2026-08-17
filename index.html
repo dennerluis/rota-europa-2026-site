@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#123E61" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Rota Europa" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./assets/icon.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Rota Europa 2026</title>
+  </head>
+  <body>
+    <main id="app" class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#hoje" aria-label="Rota Europa, início"><span class="brand-mark">RE</span><span>Rota Europa <small>2026</small></span></a>
+        <span class="trip-badge">23–28 set · 2 viajantes</span>
+      </header>
+
+      <section id="hoje" class="view active" data-view="hoje">
+        <div class="hero">
+          <div class="hero-copy"><p class="eyebrow">AMSTERDÃ · 23 SET</p><h1>Uma viagem que cabe no bolso.</h1><p>Roteiro, reservas, gastos e mapas da sua rota por Amsterdã, Garmisch e Munique.</p><a href="#roteiro" class="primary-link" data-nav="roteiro">Ver os 6 dias <span>→</span></a></div>
+          <div class="hero-image"><img src="/assets/amsterdam.jpg" alt="Canais de Amsterdã" /></div>
+        </div>
+        <section class="quick-grid">
+          <button class="quick-card" data-nav="roteiro"><span class="icon">◷</span><span><b>Próxima experiência</b><small>Van Gogh, canais e Oktoberfest</small></span><em>›</em></button>
+          <button class="quick-card" data-nav="custos"><span class="icon">€</span><span><b>Seu orçamento</b><small id="home-budget">€ 716,76 planejados</small></span><em>›</em></button>
+          <button class="quick-card" data-nav="guia"><span class="icon">✓</span><span><b>Antes de viajar</b><small>Checklist e uso offline</small></span><em>›</em></button>
+        </section>
+        <section class="section-block"><div class="section-heading"><div><p class="eyebrow">VISÃO GERAL</p><h2>Seis dias, três cenários</h2></div><button class="text-button" data-nav="roteiro">Roteiro completo</button></div><div id="cityCards" class="city-cards"></div></section>
+      </section>
+
+      <section id="roteiro" class="view" data-view="roteiro">
+        <div class="section-heading main-heading"><div><p class="eyebrow">ROTEIRO</p><h1>Dia a dia</h1><p>Toque em qualquer atividade para ver detalhes, horário, custo e localização.</p></div></div>
+        <div id="dayTabs" class="day-tabs" aria-label="Dias da viagem"></div>
+        <div id="itinerary" class="itinerary"></div>
+      </section>
+
+      <section id="custos" class="view" data-view="custos">
+        <div class="section-heading main-heading"><div><p class="eyebrow">SEUS VALORES</p><h1>Custos individuais</h1><p>Todos os valores são somente a sua parte. Não há total do casal nesta tela.</p></div></div>
+        <section class="cost-summary"><div><span>SEU ORÇAMENTO PLANEJADO</span><strong id="plannedTotal">€ 716,76</strong><small id="paidSummary">€ 0,00 marcado como pago</small></div><div class="summary-ring"><span id="paidPercent">0%</span><small>pago</small></div></section>
+        <div class="cost-actions"><button class="segment active" data-cost-filter="all">Tudo</button><button class="segment" data-cost-filter="Hospedagem">Hospedagem</button><button class="segment" data-cost-filter="Transporte">Transporte</button><button class="segment" data-cost-filter="Atrações">Atrações</button></div>
+        <div id="costList" class="cost-list"></div>
+        <section class="expense-card"><div><p class="eyebrow">GASTO REAL</p><h2>Comida, bebida e extras</h2><p>Registre somente o que você pagou.</p></div><form id="expenseForm"><div class="form-row"><select id="expenseCategory" aria-label="Categoria"><option>Comida</option><option>Bebida</option><option>Transporte extra</option><option>Outro</option></select><input id="expenseAmount" inputmode="decimal" placeholder="€ valor" required /></div><input id="expenseLabel" placeholder="Descrição, ex.: jantar no Jordaan" required /><button class="primary-button" type="submit">Adicionar meu gasto</button></form><div id="expenseList" class="expense-list"></div></section>
+      </section>
+
+      <section id="guia" class="view" data-view="guia">
+        <div class="section-heading main-heading"><div><p class="eyebrow">GUIA DE VIAGEM</p><h1>Preparação e acesso</h1><p>Informações essenciais para ter o roteiro pronto no celular.</p></div></div>
+        <section class="guide-card blue"><span class="guide-icon">⇩</span><div><h2>Uso offline</h2><p>Roteiro, custos e gastos ficam salvos neste navegador. Antes de viajar, abra todas as abas online e baixe seus vouchers e mapas no Google Maps.</p></div></section>
+        <section class="guide-card sand"><span class="guide-icon">⌂</span><div><h2>Instalar no iPhone</h2><p>No Safari, toque em Compartilhar e escolha <b>Adicionar à Tela de Início</b>. O site abre como aplicativo, sem precisar publicar para iOS.</p></div></section>
+        <section class="checklist"><div class="section-heading"><div><p class="eyebrow">CHECKLIST</p><h2>Antes de sair</h2></div><span id="checkCount">0/8</span></div><div id="checkList"></div></section>
+        <section class="links-panel"><p class="eyebrow">LINKS ÚTEIS</p><a href="https://int.bahn.de/en" target="_blank" rel="noreferrer">DB Navigator <span>↗</span></a><a href="https://www.mvv-muenchen.de/en/" target="_blank" rel="noreferrer">MVV Munique <span>↗</span></a><a href="https://zugspitze.de/en/" target="_blank" rel="noreferrer">Zugspitze: clima e operação <span>↗</span></a><a href="https://www.heinekenexperience.com/en/" target="_blank" rel="noreferrer">Heineken Experience <span>↗</span></a></section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal"><button class="nav-button active" data-nav="hoje"><span>⌂</span>Hoje</button><button class="nav-button" data-nav="roteiro"><span>◫</span>Roteiro</button><button class="nav-button" data-nav="custos"><span>€</span>Custos</button><button class="nav-button" data-nav="guia"><span>✓</span>Guia</button></nav>
+    <dialog id="activityDialog"><button id="closeDialog" aria-label="Fechar">×</button><div id="dialogContent"></div></dialog>
+    <script src="./app.js"></script>
+  </body>
+</html>
