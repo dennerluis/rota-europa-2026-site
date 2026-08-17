@@ -13,7 +13,10 @@ const app = readFileSync(join(root, 'app.js'), 'utf8');
 
 assert.match(html, /Rota Europa 2026/);
 assert.match(html, /\.\/manifest\.json/);
+assert.doesNotMatch(html, /src="\/assets\//);
 assert.equal(manifest.display, 'standalone');
 assert.match(app, /Google Maps/);
+assert.match(app, /\.\/assets\/amsterdam\.jpg/);
+assert.match(app, /register\('\.\/sw\.js'\)/);
 assert.match(app, /localStorage/);
 console.log('Static site smoke tests passed');
